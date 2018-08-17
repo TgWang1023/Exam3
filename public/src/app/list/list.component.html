@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-8">
+    <button type="button" [routerLink]="['new']" class="btn btn-primary mt-4">New Restaurant</button>
+    <table class="table mt-2">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Restaurant</th>
+          <th scope="col">Cusine</th>
+          <th scope="col">Actions available</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let restaurant of all_restaurants">
+        <tr>
+          <th scope="row">{{ restaurant.name }}</th>
+          <td>{{ restaurant.cuisine }}</td>
+          <td>
+            <button type="button" class="btn btn-success" [routerLink]="[restaurant._id]">Read Reviews</button>
+            <button type="button" class="btn btn-info ml-4" [routerLink]="[restaurant._id, 'edit']">Update</button>
+            <button *ngIf="(current_time - restaurant.createdAt)/1000 < 30" type="button" class="btn btn-danger ml-4" (click)="deleteRestaurantFromService(restaurant._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="hidden" [value]="all_restaurants">
+  </div>
+  <div class="col-sm-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<h2>Reviews for {{ name }}</h2>
+<button type="button" [routerLink]="['review']" class="btn btn-primary mt-4">New Review</button>
+<table class="table mt-2">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Customer</th>
+      <th scope="col">Stars</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let review of all_reviews">
+    <tr>
+      <th scope="row">{{ review.name }}</th>
+      <td>{{ review.rating }}</td>
+      <td>{{ review.content }}</td>
+    </tr>
+  </tbody>
+</table>

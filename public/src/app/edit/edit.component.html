@@ -1,0 +1,16 @@
+<h2>Edit a restaurant</h2>
+<form class="mt-4" (submit)="editRestaurantFromService()">
+  <div class="form-group">
+    <label for="name">Name: </label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="edited_restaurant.name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="cuisine">Cuisine: </label>
+    <input type="text" class="form-control" id="cuisine" [(ngModel)]="edited_restaurant.cuisine" name="cuisine">
+  </div>
+  <button type="button" class="btn btn-danger" [routerLink]="['/restaurants']">Cancel</button>
+  <button type="submit" class="btn btn-primary ml-4">Edit</button>
+</form>
+<div *ngFor="let error of errors" class="mt-4">
+  <p class="text-danger">{{ error }}</p>
+</div>
